@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -29,8 +31,6 @@ class LoginFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
     }
 
     override fun onCreateView(
@@ -43,6 +43,7 @@ class LoginFragment : Fragment() {
 
         //set the login button onClick
         view.findViewById<FloatingActionButton>(R.id.loginFab).setOnClickListener { view ->
+            findNavController().navigate(R.id.loginToScheduleAction)
             Snackbar.make(view, "Attempting login", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }

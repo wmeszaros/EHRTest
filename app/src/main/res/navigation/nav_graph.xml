@@ -29,5 +29,14 @@
         android:id="@+id/loginFragment"
         android:name="com.example.ehrtest.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/loginToScheduleAction"
+            app:destination="@id/scheduleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="com.example.ehrtest.ScheduleFragment"
+        android:label="fragment_schedule_list"
+        tools:layout="@layout/fragment_schedule_list" />
 </navigation>
