@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,8 +8,73 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Login" />
 
-</FrameLayout>
+    <View
+        android:id="@+id/loginSubview"
+        android:layout_width="227dp"
+        android:layout_height="263dp"
+        android:background="#D6CACA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="148dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/userName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/userName"
+        app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+    <EditText
+        android:id="@+id/clientText"
+        android:layout_width="148dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Client"
+        app:layout_constraintBottom_toBottomOf="@+id/loginSubview"
+        app:layout_constraintEnd_toEndOf="@+id/loginSubview"
+        app:layout_constraintHorizontal_bias="0.772"
+        app:layout_constraintStart_toStartOf="@+id/loginSubview"
+        app:layout_constraintTop_toTopOf="@+id/loginSubview"
+        app:layout_constraintVertical_bias="0.075" />
+
+    <EditText
+        android:id="@+id/clientSecret"
+        android:layout_width="148dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Client Secret"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/clientText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/clientText"
+        app:layout_constraintTop_toBottomOf="@+id/clientText" />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="148dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Username"
+        app:layout_constraintEnd_toEndOf="@+id/clientSecret"
+        app:layout_constraintStart_toStartOf="@+id/clientSecret"
+        app:layout_constraintTop_toBottomOf="@+id/clientSecret" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
