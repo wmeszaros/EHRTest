@@ -14,6 +14,8 @@ import com.example.ehrtest.network.NetworkStateReceiverListener
 
 class MainActivity : BaseActivity(), NetworkStateReceiverListener {
 
+    //global variables
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,10 +28,6 @@ class MainActivity : BaseActivity(), NetworkStateReceiverListener {
                 .setIcon(android.R.drawable.ic_dialog_alert).show()
         }
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
