@@ -9,8 +9,10 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
+import com.example.ehrtest.network.NetworkStateReceiverListener
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity(), NetworkStateReceiverListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +48,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun isNetworkConnected(): Boolean {
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager //1
         val networkInfo = connectivityManager.activeNetworkInfo //2
         return networkInfo != null && networkInfo.isConnected //3
+    }
+
+    override fun networkConnectivityChanged() {
+        runOnUiThread() {
+            val textView = findViewById<TextView>(R.id.connectionStatus)
+            if (isConnected) {
+                textView?.text = "Connected"
+            } else {
+                textView?.text = "Not Connected"
+                AlertDialog.Builder(this).setTitle("No Internet Connection")
+                    .setMessage("Please check your internet connection and try again")
+                    .setPositiveButton(android.R.string.ok) { _, _ -> }
+                    .setIcon(android.R.drawable.ic_dialog_alert).show()
+            }
+        }
     }
 
 }
