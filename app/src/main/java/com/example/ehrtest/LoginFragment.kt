@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -24,6 +25,7 @@ class LoginFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var userNameTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +42,15 @@ class LoginFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_login, container, false)
+        userNameTextView = view.findViewById<TextView>(R.id.userName)
+
+        val username = App.prefs!!.username
+        userNameTextView.text = username
 
         //set the login button onClick
         view.findViewById<FloatingActionButton>(R.id.loginFab).setOnClickListener { view ->
+            val username = userNameTextView.text
+            App.prefs!!.username = username.toString()
             findNavController().navigate(R.id.loginToScheduleAction)
             Snackbar.make(view, "Attempting login", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
