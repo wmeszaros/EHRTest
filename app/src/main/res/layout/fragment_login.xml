@@ -20,20 +20,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/loginPasswordText"
         android:layout_width="148dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/userName"
+        app:layout_constraintEnd_toEndOf="@+id/loginUsernameText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/userName"
-        app:layout_constraintTop_toBottomOf="@+id/userName" />
+        app:layout_constraintStart_toStartOf="@+id/loginUsernameText"
+        app:layout_constraintTop_toBottomOf="@+id/loginUsernameText" />
 
     <EditText
-        android:id="@+id/clientText"
+        android:id="@+id/loginClientText"
         android:layout_width="148dp"
         android:layout_height="50dp"
         android:ems="10"
@@ -47,29 +47,29 @@
         app:layout_constraintVertical_bias="0.075" />
 
     <EditText
-        android:id="@+id/clientSecret"
+        android:id="@+id/loginSecretText"
         android:layout_width="148dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Client Secret"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/clientText"
+        app:layout_constraintEnd_toEndOf="@+id/loginClientText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/clientText"
-        app:layout_constraintTop_toBottomOf="@+id/clientText" />
+        app:layout_constraintStart_toStartOf="@+id/loginClientText"
+        app:layout_constraintTop_toBottomOf="@+id/loginClientText" />
 
     <EditText
-        android:id="@+id/userName"
+        android:id="@+id/loginUsernameText"
         android:layout_width="148dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Username"
-        app:layout_constraintEnd_toEndOf="@+id/clientSecret"
-        app:layout_constraintStart_toStartOf="@+id/clientSecret"
-        app:layout_constraintTop_toBottomOf="@+id/clientSecret" />
+        app:layout_constraintEnd_toEndOf="@+id/loginSecretText"
+        app:layout_constraintStart_toStartOf="@+id/loginSecretText"
+        app:layout_constraintTop_toBottomOf="@+id/loginSecretText" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/loginFab"

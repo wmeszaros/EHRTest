@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
@@ -22,17 +21,23 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var clientTextView: TextView
+    private lateinit var secretTextView: TextView
     private lateinit var userNameTextView: TextView
+    private lateinit var passwordTextView: TextView
+    var client: String? = null
+    var secret: String? = null
+    var username: String? = null
+    var password: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+        //get info from any previous successful login
+        client = App.prefs!!.client
+        secret = App.prefs!!.secret
+        username = App.prefs!!.username
+        password = App.prefs!!.password
     }
 
     override fun onCreateView(
@@ -42,14 +47,20 @@ class LoginFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_login, container, false)
-        userNameTextView = view.findViewById<TextView>(R.id.userName)
+        clientTextView = view.findViewById<TextView>(R.id.loginClientText)
+        secretTextView = view.findViewById<TextView>(R.id.loginSecretText)
+        userNameTextView = view.findViewById<TextView>(R.id.loginUsernameText)
+        passwordTextView = view.findViewById<TextView>(R.id.loginPasswordText)
 
-        val username = App.prefs!!.username
         userNameTextView.text = username
 
         //set the login button onClick
         view.findViewById<FloatingActionButton>(R.id.loginFab).setOnClickListener { view ->
-            val username = userNameTextView.text
+            val clientText = clientTextView.text
+            val secretText = secretTextView.text
+            val usernameText = userNameTextView.text
+            val passwordText = passwordTextView.text
+
             App.prefs!!.username = username.toString()
             findNavController().navigate(R.id.loginToScheduleAction)
             Snackbar.make(view, "Attempting login", Snackbar.LENGTH_LONG)
